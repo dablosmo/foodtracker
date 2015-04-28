@@ -3,6 +3,7 @@
 use App\User;
 
 Route::get('/', 'FoodController@onStart');
+Route::post('/', 'FoodController@calculate');
 Route::get('/add_food', 'FoodController@add_page');
 Route::post('/add_food', 'FoodController@add_food');
 Route::get('/search', 'FoodController@search_page');

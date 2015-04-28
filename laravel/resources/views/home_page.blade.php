@@ -64,13 +64,14 @@
 	<center><h1>What's in your meal?</h1></center>
 
 	<form method="post">
+		<input type="hidden" name="_token" value="{{csrf_token()}}">
 		<table id="formTable" class="table">
 			<tbody>
 				<tr>
 					<td>
-						<select name="select_food" class="form-control">
+						<select name="select_food[]" class="form-control">
 							<?php foreach ($foods as $food){?>
-								<option value="<?php echo $food->id ?>">
+								<option value="<?php echo $food->name ?>">
 									<?php echo $food->name ?>
 								</option>
 							<?php } ?>
@@ -78,14 +79,11 @@
 						<a id="add">Add another entry.</a>
 						<input type="button" value="Delete entry." class="btn" onclick="deleteRow(this);">
 					</td>
-
 				</tr>
 			</tbody>
 		</table> 
-		
 
-
-		<input type="submit" value="Calculate Nutrition." class="btn btn-primary">
+		<center><input type="submit" value="Calculate Nutrition." class="btn btn-primary"></center>
 	</form>
 
 </div> 
