@@ -3,14 +3,10 @@
 use App\User;
 
 Route::get('/', 'FoodController@onStart');
-
-Route::get('/add_food', function()
-{
-  return view('add_food');
-});
-
+Route::get('/add_food', 'FoodController@add_page');
 Route::post('/add_food', 'FoodController@add_food');
-Route::get('/search_results', 'FoodController@search_food');
+Route::get('/search', 'FoodController@search_page');
+Route::get('/search_results', 'FoodController@api_search');
 
 /*~~~~~~~~~~~~~~~~~~~~~~~BEGIN USER MANAGEMENT FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~*/
 

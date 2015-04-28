@@ -3,6 +3,7 @@
 namespace App\Models; 
 use DB; 
 use Validator;
+use \App\Services\UsdaAPI;
 
 class Food
 {
@@ -25,7 +26,7 @@ class Food
 	public function search($term)
 	{
 		$query = DB::table('foods')
-			->select(DB::raw('foods.id, name, grams, calories, fat, cholesterol, soldium, carbohydrate, fiber, sugar, protein'));
+			->select(DB::raw('foods.id, name, grams, calories, fat, cholesterol, sodium, carbohydrate, fiber, sugar, protein'));
 		
 		if($term && $term != "" && $term != "Search...")
 		{
@@ -33,8 +34,7 @@ class Food
 		}
 
 		$query->orderBy('name'); 
-
-		return $query.get();
+		return $query->get();
 	}
 
 	public function insert($food)

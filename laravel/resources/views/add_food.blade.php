@@ -15,12 +15,23 @@
         <p> {{ $error }} </p>
     @endforeach
 
+    <?php
+        if(isset($_GET["id"]))
+        {
+            $data = $_GET["id"];
+        }
+    ?>
+
     <form method="post">
         <input type="hidden" name="_token" value="{{csrf_token()}}">
 
         <div class="form-group">
             <label for="name">Name</label>
+            @if(isset($_GET["id"]))
+            <input type="text" id="name" name="name" class="form-control" value="{{$data}}">
+            @else
             <input type="text" id="name" name="name" class="form-control" value="{{Request::old('name')}}">
+            @endif
         </div>
         <div class="form-group">
             <label for="grams">Grams</label>

@@ -46,7 +46,7 @@
       @if(Auth::check())
       	  <li><a href="/dashboard">Dashboard. </a></li>
 	      <li><a href="/add_food">Add Food.</a></li>
-	      <li><a href="/signup">Search Entries.</a></li>
+	      <li><a href="/search">Search Entries.</a></li>
 	      <li><a href="/logout">Logout.</a></li>
       @else
           <li> Log in to add your own custom foods! </li>
@@ -76,7 +76,7 @@
 							<?php } ?>
 						</select>
 						<a id="add">Add another entry.</a>
-						<input type="button" value="Delete row" class="btn" onclick="deleteRow(this);">
+						<input type="button" value="Delete entry." class="btn" onclick="deleteRow(this);">
 					</td>
 
 				</tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use \App\Models\Food;
 use Illuminate\Http\Request;
+use \App\Services\UsdaAPI;
 
 class FoodController extends Controller
 {
@@ -14,6 +15,11 @@ class FoodController extends Controller
 		return view('home_page', [
 			'foods' => $foods
 		]);
+	}
+
+	public function add_page()
+	{
+		return view('add_food');
 	}
 
 	public function add_food(Request $request)
@@ -46,5 +52,25 @@ class FoodController extends Controller
 
 		}
 		
+	}
+
+	public function search_page()
+	{
+		return view('search');
+	}
+
+	public function search(Request $request)
+	{
+		$foods = (new Food())->search($request->input('food_name')); 
+		var_dump($foods);
+	}
+
+	public function api_search(Request $request)
+	{
+		$usda_api = UsdaAPI::search($request->input('food_name'));
+		
+		return view('results', [
+			'usdaData' => $usda_api
+		]);
 	}
 }
