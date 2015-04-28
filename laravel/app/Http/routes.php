@@ -8,6 +8,8 @@ Route::get('/add_food', 'FoodController@add_page');
 Route::post('/add_food', 'FoodController@add_food');
 Route::get('/search', 'FoodController@search_page');
 Route::get('/search_results', 'FoodController@api_search');
+Route::get('/add_drink', 'FoodController@add_drink'); 
+Route::post('add_drink', 'FoodController@insert_drink');
 
 /*~~~~~~~~~~~~~~~~~~~~~~~BEGIN USER MANAGEMENT FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~*/
 

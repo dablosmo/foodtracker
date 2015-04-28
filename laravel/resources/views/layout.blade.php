@@ -23,6 +23,7 @@
     @if(Auth::check())
       <li><a href="/dashboard">Dashboard. </a></li>
   	  <li><a href="/add_food">Add Food.</a></li>
+      <li><a href="/add_drink">Add Drink.</a></li>
   	  <li><a href="/search">Search Entries.</a></li>
   	  <li><a href="/logout">Logout.</a></li>
     @else

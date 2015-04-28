@@ -46,6 +46,7 @@
       @if(Auth::check())
       	  <li><a href="/dashboard">Dashboard. </a></li>
 	      <li><a href="/add_food">Add Food.</a></li>
+	      <li><a href="/add_drink">Add Drink.</a></li>
 	      <li><a href="/search">Search Entries.</a></li>
 	      <li><a href="/logout">Logout.</a></li>
       @else
@@ -75,9 +76,15 @@
 									<?php echo $food->name ?>
 								</option>
 							<?php } ?>
+
+							<?php foreach ($drinks as $drink){?>
+								<option value="<?php echo $drink->name ?>">
+									<?php echo $drink->name ?>
+								</option>
+							<?php } ?>
 						</select>
-						<a id="add">Add another entry.</a>
-						<input type="button" value="Delete entry." class="btn" onclick="deleteRow(this);">
+						<a id="add">Add another food entry.</a>
+						<input type="button" value="Delete food entry." class="btn" onclick="deleteRow(this);">
 					</td>
 				</tr>
 			</tbody>

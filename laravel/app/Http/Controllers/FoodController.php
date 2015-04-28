@@ -3,6 +3,7 @@
 namespace App\Http\Controllers; 
 
 use \App\Models\Food;
+use \App\Models\Drink;
 use Illuminate\Http\Request;
 use \App\Services\UsdaAPI;
 
@@ -11,9 +12,11 @@ class FoodController extends Controller
 	public function onStart()
 	{
 		$foods = (new Food())->getFoods();
+		$drinks = (new Drink())->getDrinks();
 
 		return view('home_page', [
-			'foods' => $foods
+			'foods' => $foods,
+			'drinks' => $drinks
 		]);
 	}
 
@@ -52,6 +55,41 @@ class FoodController extends Controller
 
 		}
 		
+	}
+
+	public function add_drink()
+	{
+		return view('add_drink');
+	}
+
+	public function insert_drink(Request $request)
+	{
+		$DrinkEntry = new Drink(); 
+
+		if($request->all()) 
+		{
+			$validator = $DrinkEntry->validate($request->all()); 
+			if($validator->passes()) 
+			{ 
+				$DrinkEntry->insert([
+					'name' => $request->input('name'), 
+					'ounces' => $request->input('ounces'), 
+					'calories' => $request->input('calories'),
+					'fat' => $request->input('fat'),
+					'cholesterol' => $request->input('cholesterol'),
+					'sodium' => $request->input('sodium'),
+					'carbohydrate' => $request->input('carbohydrate'),
+					'fiber' => $request->input('fiber'),
+					'sugar' => $request->input('sugar'),
+					'protein' => $request->input('protein'),
+				]);
+
+				return redirect('add_drink')
+						->with('success', '"' . $request->input('name') . '" inserted successfully.');
+			}
+
+			return redirect('add_drink')->withErrors($validator)->withInput();
+		}
 	}
 
 	public function search_page()
