@@ -6,10 +6,32 @@
 </head> 
 <body> 
 
-<nav role="navigation" class="navbar navbar-default">
-    <div class="navbar-header">
-        <a href="/dashboard" class="navbar-brand">FoodTracker.</a>
-    </div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <a class="navbar-brand" href="/dashboard">FoodTracker.</a>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+    @if(Auth::check())
+      <li><a href="/dashboard">Dashboard. </a></li>
+	  <li><a href="/login">Add Food.</a></li>
+	  <li><a href="/signup">Search Entries.</a></li>
+	  <li><a href="/logout">Logout.</a></li>
+    @else
+      <li><a href="/login">Log In</a></li>
+      <li><a href="/signup">Sign Up</a></li>
+    @endif
+
+    </ul>
+  </div>
 </nav>
 
 <div class="container"> 

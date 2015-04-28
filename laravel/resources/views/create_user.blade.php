@@ -5,6 +5,11 @@
 @stop
 
 @section('content')
+
+    @foreach($errors->all() as $error)
+        <p>{{$error}}</p>
+    @endforeach
+
     <h1>Create User</h1>
 
     <form method="post">
@@ -27,6 +32,6 @@
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
         </div>
 
-        <input type="submit" value="Create" class="btn btn-primary">
+        <input type="submit" value="Submit" class="btn btn-primary">
     </form>
 @stop
