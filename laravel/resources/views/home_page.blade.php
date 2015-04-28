@@ -61,7 +61,7 @@
 
 <div class="container"> 
 
-	<center><h1>What's in your meal?</h1></center>
+	<center><h1>What are you eating?</h1></center>
 
 	<form method="post">
 		<input type="hidden" name="_token" value="{{csrf_token()}}">

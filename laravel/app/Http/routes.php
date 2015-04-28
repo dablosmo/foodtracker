@@ -74,10 +74,10 @@ Route::get('dashboard', function()
   return redirect('login');
 });
 
-Route::get('dashboard', ['middleware' => 'auth', function()
-{
-  return view('dashboard');
-}]);
+// Route::get('dashboard', ['middleware' => 'auth', function()
+// {
+//   return view('dashboard');
+// }]);
 
 Route::get('logout', function()
 {
