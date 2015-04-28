@@ -9,9 +9,9 @@ class UsdaAPI
 	{ 
 		$food = urlencode($food_name); 
 
-		if(Cache::has("fatsecret-$food_name"))
+		if(Cache::has("usda-$food_name"))
 		{
-			$food_data = Cache::get("fatsecret-$food_name");
+			$food_data = Cache::get("usda-$food_name");
 		}
 		else
 		{
@@ -19,6 +19,8 @@ class UsdaAPI
 			$jsonString = file_get_contents($url); 
 			$data = json_decode($jsonString, true); 
 			$food_data = $data['list']['item'];
+
+			Cache::put("usda-$food_name", $food_data, 60);
 
 			return $food_data;
 
