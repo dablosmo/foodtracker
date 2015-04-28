@@ -4,6 +4,8 @@ use App\User;
 
 Route::get('/', 'WelcomeController@index');
 
+/*~~~~~~~~~~~~~~~~~~~~~~~BEGIN USER MANAGEMENT FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 Route::get('signup', function()
 {
 	return view('signup');
@@ -65,8 +67,57 @@ Route::get('logout', function()
   return redirect('login');
 });
 
-
-Route::get('password', ['middleware' => 'auth', function()
+Route::get('manage', function()
 {
-  dd('edit password page');
-}]);
+  $users = User::all(); 
+
+  return view('manage_users', [
+    'users' => $users
+  ]);
+});
+
+Route::get('user/create', function()
+{
+  return view('create_user');
+});
+
+Route::post('user/create', function()
+{
+  $validation = User::validate(Request::all());
+
+  if ($validation->passes()) {
+    $user = new User();
+    $user->name = Request::input('name');
+    $user->email = Request::input('email');
+    $user->password = Hash::make(Request::input('password'));
+    $user->save();
+
+    return redirect('manage')
+        ->with('success', '"' . $user->name . '" inserted successfully.');
+  }
+  return redirect('user/create')->withInput()->withErrors($validation->errors());
+});
+
+Route::get('user/{id}/edit', function($id)
+{
+  return view('edit_user');
+});
+
+Route::post('user/{id}/edit', function($id)
+{
+  $user = User::find($id); 
+  $user->name = Request::input('name'); 
+  $user->email = Request::input('email');
+  $user->password = Hash::make(Request::input('password'));
+  $user->save();
+  return redirect('manage')
+      ->with('success', '"' . $user->name . '" edited successfully.');
+});
+
+Route::get('user/{id}/delete', function($id)
+{
+  $user = User::find($id); 
+  $user->delete();
+  return redirect('manage')
+      ->with('success', '"' . $user->name . '" deleted successfully.');
+});

@@ -6,6 +6,12 @@
 </head> 
 <body> 
 
+<nav role="navigation" class="navbar navbar-default">
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">FoodTracker.</a>
+    </div>
+</nav>
+
 <div class="container"> 
 	@yield('content') 
 </div> 
