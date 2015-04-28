@@ -37,7 +37,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return Validator::make($input,
 		  [
 		    'name' => 'required',
-		    'password' => 'required|min:8|confirmed',
+		    'password' => 'required|min:7|confirmed',
 		    'email' => 'required|email|unique:users'
 		  ]
 		);

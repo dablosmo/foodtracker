@@ -26,4 +26,6 @@
 
         <input type="submit" value="Login" class="btn btn-primary">
     </form>
+
+    <a href="signup">Create an Account.</a>
 @stop

@@ -22,7 +22,6 @@ Route::post('signup', function()
     $user->password = Hash::make(Request::input('password'));
     $user->save();
 
-    //    return redirect('login');
     Auth::loginUsingId($user->id);
     return redirect('dashboard');
   }
@@ -40,10 +39,24 @@ Route::post('login', function()
   $remember_me = Request::input('remember_me') === 'on' ? true : false;
 
   if (Auth::attempt(['email' => Request::input('email'), 'password' => Request::input('password')], $remember_me)) {
-//    return redirect('dashboard');
+    
+    if(Request::input('email') == "david@usc.edu" || Request::input('email') == "dablosmo728@gmail.com" )
+    {
+      return redirect('admin');
+    }
+
     return redirect()->intended();
   }
 
+  return redirect('login');
+});
+
+Route::get('admin', function()
+{
+  if(Auth::check())
+  {
+    return view('admin'); 
+  }
   return redirect('login');
 });
 
