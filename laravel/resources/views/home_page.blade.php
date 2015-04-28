@@ -37,7 +37,7 @@
       <span class="icon-bar"></span>
     </button>    
   </div>
-  <a class="navbar-brand" href="#">FoodTracker.</a>
+  <a class="navbar-brand" href="/">FoodTracker.</a>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-center">
 
@@ -45,7 +45,7 @@
     <ul class="nav navbar-nav navbar-right">
       @if(Auth::check())
       	  <li><a href="/dashboard">Dashboard. </a></li>
-	      <li><a href="/login">Add Food.</a></li>
+	      <li><a href="/add_food">Add Food.</a></li>
 	      <li><a href="/signup">Search Entries.</a></li>
 	      <li><a href="/logout">Logout.</a></li>
       @else
@@ -61,7 +61,7 @@
 
 <div class="container"> 
 
-	<h1>What's in your meal?</h1>
+	<center><h1>What's in your meal?</h1></center>
 
 	<form method="post">
 		<table id="formTable" class="table">
@@ -69,7 +69,6 @@
 				<tr>
 					<td>
 						<select name="select_food" class="form-control">
-							<option value="">All</option>
 							<?php foreach ($foods as $food){?>
 								<option value="<?php echo $food->id ?>">
 									<?php echo $food->name ?>
@@ -79,7 +78,6 @@
 						<a id="add">Add another entry.</a>
 						<input type="button" value="Delete row" class="btn" onclick="deleteRow(this);">
 					</td>
-
 
 				</tr>
 			</tbody>

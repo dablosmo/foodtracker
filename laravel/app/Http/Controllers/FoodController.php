@@ -39,10 +39,10 @@ class FoodController extends Controller
 				]);
 
 				return redirect('add_food')
-						->with('success', '"' . $FoodEntry->name . '" inserted successfully.');
+						->with('success', '"' . $request->input('name') . '" inserted successfully.');
 			}
 
-			//return redirect()
+			return redirect('add_food')->withErrors($validator)->withInput();
 
 		}
 		

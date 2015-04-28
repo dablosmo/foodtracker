@@ -14,7 +14,7 @@
       <span class="icon-bar"></span>
     </button>    
   </div>
-  <a class="navbar-brand" href="/dashboard">FoodTracker.</a>
+  <a class="navbar-brand" href="/">FoodTracker.</a>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-left">
     </ul>
@@ -22,7 +22,7 @@
 
     @if(Auth::check())
       <li><a href="/dashboard">Dashboard. </a></li>
-	  <li><a href="/login">Add Food.</a></li>
+	  <li><a href="/add_food">Add Food.</a></li>
 	  <li><a href="/signup">Search Entries.</a></li>
 	  <li><a href="/logout">Logout.</a></li>
     @else
