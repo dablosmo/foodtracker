@@ -128,6 +128,10 @@ class FoodController extends Controller
 		foreach($request->input('select_food') as $data)
 		{
 			$food_data = (new Food())->search($data); 
+			if($food_data == null)
+			{
+				$food_data = (new Drink())->search($data);
+			}
 			$total_calories += $food_data[0]->calories;
 			$total_fat += $food_data[0]->fat;
 			$total_cholesterol += $food_data[0]->cholesterol;
