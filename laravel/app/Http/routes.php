@@ -2,7 +2,8 @@
 
 use App\User;
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'FoodController@onStart');
+Route::post('/add_food', 'FoodController@add_food');
 
 /*~~~~~~~~~~~~~~~~~~~~~~~BEGIN USER MANAGEMENT FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
