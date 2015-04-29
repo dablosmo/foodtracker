@@ -30,6 +30,7 @@ class UsdaAPI
 		if(Cache::has("usda-$food_name"))
 		{
 			$food_data = Cache::get("usda-$food_name");
+			return $food_data;
 		}
 		else
 		{
