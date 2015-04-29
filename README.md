@@ -6,10 +6,7 @@ ITP-405 final project
 
 ##To run, clone the repository, move into the laravel folder, and run composer install. 
 
-##Administrator account is 
+##Administrator account is: 
 
 user: david@usc.edu 
 pass: laravel 
-
-
-
