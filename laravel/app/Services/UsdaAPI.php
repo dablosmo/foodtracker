@@ -5,6 +5,24 @@ use Illuminate\Support\Facades\Cache;
 
 class UsdaAPI
 {
+	protected $cache; 
+	protected $client;
+
+	public function __construct(\Illuminate\Cache\Repository $cache, $client) 
+	{
+		$this->cache = $cache; 
+		$this->client = $client;
+	}
+
+	public function testSearch($food_name)
+	{
+		if ($this->cache->has($food_name))
+		{
+			return "found";
+		}
+		return "not found";
+	}
+
 	public static function search($food_name)
 	{ 
 		$food = urlencode($food_name); 
