@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head> 
-	<title>FoodTracker @yeild('title')</title>
+	<title>FoodTracker</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> 
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
